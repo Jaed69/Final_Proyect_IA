@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Coin
   - Wall
+  - Goal
+  - Obst
   layers:
   - Default
   - TransparentFX
