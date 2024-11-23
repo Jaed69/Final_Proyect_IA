@@ -40,6 +40,9 @@ public class AgentController : Agent
         // Agent
         transform.localPosition = new Vector3(Random.Range(-3.5f, 3.5f), 0.3f, Random.Range(-3.5f, 3.5f));
 
+        // Reactiva solo las monedas del entorno actual
+        ReactivateRewards();
+
         // Coin
         CreateCoin();
 
@@ -134,19 +137,21 @@ public class AgentController : Agent
 
     private void OnTriggerEnter(Collider other)
     {
+        // Recolección de monedas
         if (other.gameObject.CompareTag("Coin"))
         {
-            spawnedCoinsList.Remove(other.gameObject);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             AddReward(10f);
-            if (spawnedCoinsList.Count == 0)
+
+            if (!spawnedCoinsList.Exists(coin => coin.activeSelf) && AreAllRewardsCollected())
             {
                 envMaterial.color = Color.green;
-                RemoveCoin(spawnedCoinsList);
                 AddReward(5f);
                 EndEpisode();
             }
         }
+
+        // Colisión con pared
         if (other.gameObject.CompareTag("Wall"))
         {
             envMaterial.color = Color.red;
@@ -154,7 +159,25 @@ public class AgentController : Agent
             AddReward(-15f);
             EndEpisode();
         }
+
+        // Colisión con obstaculo
+        if (other.gameObject.CompareTag("Obst"))
+        {
+            envMaterial.color = Color.red;
+            RemoveCoin(spawnedCoinsList);
+            AddReward(-15f);
+            EndEpisode();
+        }
+
+        // Llegada a la meta
+        if (other.gameObject.CompareTag("Goal"))
+        {
+            envMaterial.color = Color.yellow; // Cambia el color para indicar éxito
+            AddReward(100f); // Gran recompensa por llegar a la meta
+            EndEpisode();
+        }
     }
+
 
     private void EpisodeTimerNew()
     {
@@ -171,4 +194,52 @@ public class AgentController : Agent
             EndEpisode();
         }
     }
+
+    private void ReactivateRewards()
+    {
+        // Encuentra todas las recompensas dentro del entorno actual
+        Transform rewardsContainer = environmentLocation.Find("Reward"); // Encuentra el contenedor "Reward" dentro del entorno actual
+
+        if (rewardsContainer != null)
+        {
+            foreach (Transform reward in rewardsContainer)
+            {
+                reward.gameObject.SetActive(true); // Reactiva cada recompensa (moneda)
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No se encontraron recompensas en este entorno.");
+        }
+    }
+
+    private bool AreAllRewardsCollected()
+    {
+        // Encuentra el contenedor "Reward" dentro del entorno actual
+        Transform rewardsContainer = environmentLocation.Find("Reward");
+
+        if (rewardsContainer != null)
+        {
+            foreach (Transform reward in rewardsContainer)
+            {
+                if (reward.gameObject.activeSelf) // Si alguna Reward sigue activa, no se han recolectado todas
+                {
+                    return false;
+                }
+            }
+            return true; // Todas las Rewards están desactivadas
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el contenedor de Rewards en este entorno.");
+            return false;
+        }
+    }
+
+
+
+
 }
+
+
+

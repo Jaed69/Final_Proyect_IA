@@ -1,0 +1,54 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1732364691",
+        "python_version": "3.10.12 | packaged by Anaconda, Inc. | (main, Jul  5 2023, 19:01:18) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\penca\\.conda\\envs\\mlagents\\Scripts\\mlagents-learn --resume --run-id=HardDecision1",
+        "mlagents_version": "1.1.0",
+        "mlagents_envs_version": "1.1.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.5.0+cpu",
+        "numpy_version": "1.23.5",
+        "end_time_seconds": "1732364703"
+    },
+    "total": 12.210737799992785,
+    "count": 1,
+    "self": 0.0069136000238358974,
+    "children": {
+        "run_training.setup": {
+            "total": 0.03982999996514991,
+            "count": 1,
+            "self": 0.03982999996514991
+        },
+        "TrainerController.start_learning": {
+            "total": 12.163994200003799,
+            "count": 1,
+            "self": 9.849999332800508e-05,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 12.053264099988155,
+                    "count": 1,
+                    "self": 12.053264099988155
+                },
+                "trainer_threads": {
+                    "total": 9.00006853044033e-07,
+                    "count": 1,
+                    "self": 9.00006853044033e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 0.11063070001546293,
+                    "count": 1,
+                    "self": 0.012120800034608692,
+                    "children": {
+                        "RLTrainer._checkpoint": {
+                            "total": 0.09850989998085424,
+                            "count": 1,
+                            "self": 0.09850989998085424
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

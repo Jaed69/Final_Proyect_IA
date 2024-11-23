@@ -1,0 +1,65 @@
+{
+    "AgentControl": {
+        "checkpoints": [
+            {
+                "steps": 349953,
+                "file_path": "results\\HardDecision3.0\\AgentControl\\AgentControl-349953.onnx",
+                "reward": 501.5,
+                "creation_time": 1732367517.8137708,
+                "auxillary_file_paths": [
+                    "results\\HardDecision3.0\\AgentControl\\AgentControl-349953.pt"
+                ]
+            },
+            {
+                "steps": 399988,
+                "file_path": "results\\HardDecision3.0\\AgentControl\\AgentControl-399988.onnx",
+                "reward": 335.0,
+                "creation_time": 1732367551.601459,
+                "auxillary_file_paths": [
+                    "results\\HardDecision3.0\\AgentControl\\AgentControl-399988.pt"
+                ]
+            },
+            {
+                "steps": 449961,
+                "file_path": "results\\HardDecision3.0\\AgentControl\\AgentControl-449961.onnx",
+                "reward": null,
+                "creation_time": 1732367584.8812318,
+                "auxillary_file_paths": [
+                    "results\\HardDecision3.0\\AgentControl\\AgentControl-449961.pt"
+                ]
+            },
+            {
+                "steps": 499981,
+                "file_path": "results\\HardDecision3.0\\AgentControl\\AgentControl-499981.onnx",
+                "reward": 570.0,
+                "creation_time": 1732367615.3822422,
+                "auxillary_file_paths": [
+                    "results\\HardDecision3.0\\AgentControl\\AgentControl-499981.pt"
+                ]
+            },
+            {
+                "steps": 500301,
+                "file_path": "results\\HardDecision3.0\\AgentControl\\AgentControl-500301.onnx",
+                "reward": 570.0,
+                "creation_time": 1732367615.4865627,
+                "auxillary_file_paths": [
+                    "results\\HardDecision3.0\\AgentControl\\AgentControl-500301.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500301,
+            "file_path": "results\\HardDecision3.0\\AgentControl.onnx",
+            "reward": 570.0,
+            "creation_time": 1732367615.4865627,
+            "auxillary_file_paths": [
+                "results\\HardDecision3.0\\AgentControl\\AgentControl-500301.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.1.0",
+        "torch_version": "2.5.0+cpu"
+    }
+}
